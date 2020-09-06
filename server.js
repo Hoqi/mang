@@ -17,9 +17,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
+
+
 require('./models/user');
-require('./models/token');
-app.use('/auth', require('./routes/auth/auth'));
+require('./models/accessToken');
+require('./models/refreshToken');
+app.use('/auth', require('./routes/auth'));
+
 
 app.listen(port,() => {
     console.log(`[OK] Server is running on port:${port}`);

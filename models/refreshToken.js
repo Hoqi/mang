@@ -1,5 +1,23 @@
-const mongose = require('mongoose');
-const { Schema } = require('mongoose')
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken')
-const config = require('../config/config')
+const mongoose = require('mongoose');
+const { Schema } = mongoose
+const uuid = require('uuid')
+
+
+const RefreshTokenSchema = new Schema({
+    uid: {
+        type: String,
+        required: true
+    },
+    token: {
+        type: String,
+        required: true,
+        unique: true
+    }
+})
+
+
+RefreshTokenSchema.methods.createToken = function(){
+    this.token = uuid.v4();
+}
+
+module.exports = mongoose.model('refreshTokens',RefreshTokenSchema);

@@ -1,4 +1,4 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 const { Schema } = require('mongoose')
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken')
@@ -18,12 +18,13 @@ const AccessTokenSchema = new Schema({
 })
 
 
-AccessTokenSchema.methods.createAccessToken = function(user){
+AccessTokenSchema.methods.createToken = function(user){
     this.token = jwt.sign({
         id: user._id,
-        ttl: parseInt(new Date().getTime() / 1000 , 10) + 60*30,
+        ttl: parseInt( new Date().getTime() / 1000 , 10) + 60*30,
         role: user.role
-    },"secret");
+    },config.secret);
+    console.log('A token: ' + this.token);
 }
 
-module.exports = mongose.model('accessTokens',AccessTokenSchema);
+module.exports = mongoose.model('accessTokens',AccessTokenSchema);
