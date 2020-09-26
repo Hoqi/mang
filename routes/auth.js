@@ -1,40 +1,58 @@
 const router = require('express').Router();
-const userService = require('../services/user')
-const authService = require('../services/auth')
-const jwt = require('express-jwt')
+const userService = require('../services/user');
+const authService = require('../services/auth');
+const jwt = require('express-jwt');
+const {ErrorHandler} = require('../helpers/error');
 
-router.post('/auth', authService.options,(req,res) =>{
-    return  res.status(200).json('rabotaet');
-})
-
-router.post('/token',(req,res) => {
-    const {body: {user}} = req;
-    if(authService.checkUserData(user)){
-        authService.authorization(user).then(value => {
-            return  res.status(200).json(value)
-        }, reason => {return res.status(400).json({error: reason})})
-    } else return res.status(415).json({error: 'invalid user data'});
-})
-
-router.post('/register', (req,res) => {
-    const {body: {user}} = req;
-    console.log(user);
-    if(!authService.checkUserData(user)){
-        return res.status(422).json({
-            error: 'invalid login or password',
-        })
+router.post('/auth', authService.options, async (req, res) => {
+    if (req.user) {
+        throw new ErrorHandler(400,'pizda')
     }
-    userService.create(user).then((newUser) => {
-        res.status(200).json(newUser);
-    },reason => res.status(405).json({error: 'email already used'}));
-
-    /*if(await userService.create(user)){
-        return res.status(200).json({
-            status:'success'
-        })
-    } else return res.status(400).send();*/
+    res.status(200).json('rabotaet');
 })
 
+router.post('/token', async (req, res, next) => {
+    try {
+        const user = req.body;
+    if (authService.checkUserData(user)) {
+        const tokens = await authService.authorization(user);
+        res.status(200).json(tokens);  
+    } else throw new ErrorHandler(406,'invalid login or password');
+    } catch (err){
+        next(err);
+    }
+    
+})
+
+router.post('/register', async (req, res, next) => {
+    const { body: { user } } = req;
+    if (!authService.checkUserData(user)) {
+        try {
+            const newUser = await userService.create(user);
+            res.status(200).json(newUser);
+        } catch (error) {
+            res.status(409).json({ error: 'email alreade used'});
+        }
+    }
+    res.status(422).json({
+        error: 'invalid login or password',
+    })
+})
+
+router.post('/refresh', async (req,res,next) => {
+    const a = 5;
+    try {
+        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Refresh'){
+            const tokens = await authService.refresh(req.headers.authorization.split(' ')[1]);
+            res.status(200).json(tokens);
+        }
+        else {
+            throw new ErrorHandler(401, 'Where token?')
+        }
+    } catch (err) {
+        next(err);
+    }
+})
 
 
 

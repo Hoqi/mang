@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
+const {handleError} = require('./helpers/error');
 
 
 const app = express();
@@ -23,7 +24,10 @@ require('./models/user');
 require('./models/accessToken');
 require('./models/refreshToken');
 app.use('/auth', require('./routes/auth'));
-
+app.use('/user', require('./routes/user'));
+app.use((err,req,res,next) => {
+    handleError(err,res);
+});
 
 app.listen(port,() => {
     console.log(`[OK] Server is running on port:${port}`);

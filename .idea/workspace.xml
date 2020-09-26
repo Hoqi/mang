@@ -20,14 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85edaa68-0f25-490a-94ab-0547348661f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/refreshToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/refreshToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/token.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/accessToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/accessToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server.js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -55,6 +55,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dimka\Desktop\hmmm\routes" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="server.js" type="NodeJSConfigurationType" path-to-node="$PROJECT_DIR$/../../../../Program Files/nodejs/node" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -68,8 +73,19 @@
       <workItem from="1599300568987" duration="1371000" />
       <workItem from="1599303713396" duration="10245000" />
       <workItem from="1599374514042" duration="18944000" />
-      <workItem from="1599403017960" duration="2076000" />
+      <workItem from="1599403017960" duration="2722000" />
+      <workItem from="1599799484388" duration="855000" />
+      <workItem from="1599805570959" duration="4261000" />
+      <workItem from="1600622212671" duration="70000" />
     </task>
+    <task id="LOCAL-00001" summary="add simple auth service">
+      <created>1599405325106</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599405325106</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,10 +103,49 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add simple auth service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add simple auth service" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="445" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599403725342">
+    <state x="445" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599810934706">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="445" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599403725342" />
+    <state x="445" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599810934706" />
+    <state x="771" y="294" key="FileChooserDialogImpl" timestamp="1599810910740">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="771" y="294" key="FileChooserDialogImpl/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599810910740" />
+    <state width="1838" height="295" key="GridCell.Tab.0.bottom" timestamp="1599811080881">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1838" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599811080881" />
+    <state width="1838" height="295" key="GridCell.Tab.0.center" timestamp="1599811080881">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1838" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599811080881" />
+    <state width="1838" height="295" key="GridCell.Tab.0.left" timestamp="1599811080881">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1838" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599811080881" />
+    <state width="1838" height="295" key="GridCell.Tab.0.right" timestamp="1599811080881">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1838" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599811080881" />
+    <state x="583" y="272" key="Vcs.Push.Dialog.v2" timestamp="1599405329353">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="583" y="272" key="Vcs.Push.Dialog.v2/62.0.1858.1080/1920.185.1375.900@62.0.1858.1080" timestamp="1599405329353" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server.js</url>
+          <line>21</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
