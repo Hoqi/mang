@@ -43,7 +43,6 @@ Auth.getTokenPair = async function (user) {
 
 Auth.authorization = async function (user) {
     const userDb = await userService.findByEmail(user);
-    // TODO delete refresh token with compare browser fingerprint
     if (userDb && userDb.comparePassword(user.password)) {
         await this.deleteAccessToken(userDb._id)
         const result = await this.getTokenPair(userDb);

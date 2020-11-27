@@ -7,13 +7,14 @@ class ErrorHandler extends Error {
 }
 
 const handleError = function (error, res) {
+    console.log('[ERROR] ' + error.message)
     try {
         const { status, message } = error;
         res.status(status).json({
             message
         })
     } catch (err) {
-        res.status(500).send('HA-HA')
+        res.status(500).send('Server error')
     }
 }
 
